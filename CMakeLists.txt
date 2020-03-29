@@ -12,6 +12,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS} src)
 
-add_executable(GameOfLife src/main.cpp)
+add_executable(GameOfLife src/main.cpp src/Grid.cpp src/Controller.cpp src/Cell.cpp src/Game.cpp)
 string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 target_link_libraries(GameOfLife ${SDL2_LIBRARIES})
