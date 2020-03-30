@@ -55,6 +55,7 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 * [Wikipedia Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life)
 * [Patterns of the Game of life](game-of-life.daneaiulian.com)
+* [SDL Wiki](https://wiki.libsdl.org/APIByCategory)
 
 ### Contributors
 
