@@ -1,10 +1,10 @@
 #include "Game.h"
 
-Game::Game(Grid &grid, Controller &controller) : _grid(grid), _controller(controller), _isInitialized(false), _running(true), _initializing(true) {
+Game::Game(Grid &grid, Controller &controller) : _grid(grid), _controller(controller), _isInitialized(false), _running(true) {
     _grid.drawCells();
-    while (_initializing) {
-        _controller.getUserInput(_initializing, _isInitialized, _initialX, _initialY);
-        _grid.setFirstAlive(_initialX, _initialY, _initializing);
+    while (!_isInitialized) {
+        _controller.getUserInput(_running, _isInitialized, _initialX, _initialY);
+        _grid.setAlive(_initialX, _initialY);
         _grid.drawCells();
     }
 }

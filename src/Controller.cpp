@@ -9,15 +9,16 @@ void Controller::getUserInput(bool &running, bool &isInitialized, int &_xMouse, 
         {
             running = false;
         }
-        if (e.type == SDL_KEYDOWN)
-        {
-            running = false;
-        }
-        if (e.type == SDL_MOUSEBUTTONDOWN && !isInitialized)
+        else if (e.type == SDL_MOUSEBUTTONDOWN && !isInitialized)
         {
             _xMouse = e.motion.x;
             _yMouse = e.motion.y;
-            isInitialized = true;
+        }
+        else if (e.type == SDL_KEYDOWN)
+        {
+            if (e.key.keysym.sym == SDLK_RETURN) {
+                isInitialized = true;
+            }
         }
     }
 }

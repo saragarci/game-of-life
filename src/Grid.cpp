@@ -78,17 +78,3 @@ void Grid::setAlive(int x, int y)
     else
         std::cout << "Cell out of bounds!" << y << std::endl;
 }
-
-void Grid::setFirstAlive(int x, int y, bool &initializing)
-{
-    std::cout << "Cell x: " << x << " y: " << y << std::endl;
-    if (x >= 0 && x < static_cast<int>(screen_width) && y >= 0 && y < static_cast<int>(screen_height))
-    {
-        _cells[x/static_cast<int>(cell_width)][y/static_cast<int>(cell_height)].setIsAlive(true);
-        initializing = false;
-    }
-    else 
-    {
-        std::cout << "Cell out of bounds!" << y << std::endl;
-    }
-}

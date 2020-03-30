@@ -18,7 +18,6 @@ private:
     int _initialY;
     bool _isInitialized;
     bool _running;
-    bool _initializing;
 };
 
 #endif

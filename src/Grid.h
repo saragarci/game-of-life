@@ -19,7 +19,6 @@ public:
     int getNumberOfRows() { return static_cast<int>(screen_height/cell_height); }
     int getNumberOfColumns() { return static_cast<int>(screen_width/cell_width); }
     void setAlive(int x, int y);
-    void setFirstAlive(int x, int y, bool &initializing);
 
 private:
     std::vector<std::vector<Cell>> _cells;
