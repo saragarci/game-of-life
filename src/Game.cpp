@@ -15,7 +15,7 @@ void Game::startGame() {
     int count = 0;
     while (_running) {
         std::cout << "Iteration: " << count << std::endl;
-        //SDL_Delay(5000);
+        SDL_Delay(300);
         _controller.getUserInput(_running, _isInitialized, _initialX, _initialY);
         _grid.updateCells();
         _grid.drawCells();

@@ -6,7 +6,6 @@
 #include <SDL.h>
 #include <vector>
 #include <iostream>
-#include <memory>
 
 class Grid {
 public:
@@ -22,12 +21,13 @@ public:
     void updateCells();
 
 private:
-    int getAliveNeighbours(int i, int j, std::vector<std::vector<Cell>> cellsPresentState);
-    int getNeighbour(int x, int y, std::vector<std::vector<Cell>> cellsPresentState);
+    int getAliveNeighbours(int i, int j);
+    int getNeighbour(int x, int y);
     
-    std::vector<std::vector<Cell>> createCellsCopy();
+    void updateCellsCopy();
 
     std::vector<std::vector<Cell>> _cells;
+    std::vector<std::vector<Cell>> _cellsCopy;
     
     SDL_Window *sdl_window;
     SDL_Renderer *sdl_renderer;

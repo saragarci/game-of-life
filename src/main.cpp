@@ -5,8 +5,8 @@
 #include <iostream>
 
 int main(int, char**){
-    constexpr std::size_t kScreenWidth{800};
-    constexpr std::size_t kScreenHeight{800};
+    constexpr std::size_t kScreenWidth{640};
+    constexpr std::size_t kScreenHeight{640};
     constexpr std::size_t kCellWidth{20};
     constexpr std::size_t kCellHeight{20};
 
