@@ -2,12 +2,12 @@
 
 Grid::Grid(const std::size_t screen_width,
            const std::size_t screen_height,
-           const std::size_t grid_width,
-           const std::size_t grid_height)
+           const std::size_t cell_width,
+           const std::size_t cell_height)
     : screen_width(screen_width),
       screen_height(screen_height),
-      grid_width(grid_width),
-      grid_height(grid_height)
+      cell_width(cell_width),
+      cell_height(cell_height)
 {
     // Initialize the video subsystem
     if (SDL_Init(SDL_INIT_VIDEO) != 0){
@@ -27,9 +27,6 @@ Grid::Grid(const std::size_t screen_width,
     if (sdl_renderer == nullptr){
         std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
     }
-
-    CreateCells();
-    DrawCells();
 }
 
 Grid::~Grid()
@@ -39,28 +36,42 @@ Grid::~Grid()
     SDL_Quit();
 }
 
-void Grid::CreateCells()
+void Grid::createCells()
 {
     bool isActive = false;
-    for(int i=0; i<screen_width; i+=grid_width)
+    for (int i=0; i<Grid::getNumberOfRows(); ++i)
     {
-        for(int j=0; j<screen_height; j+=grid_height)
-        {
-            _cells.emplace_back(Cell(i, j, static_cast<int>(grid_width), static_cast<int>(grid_height), isActive));
-        }
+        std::vector<Cell> v;
+        for (int j=0; j<Grid::getNumberOfColumns(); ++j)
+            v.emplace_back(Cell(i*cell_width, j*cell_height, static_cast<int>(cell_width), static_cast<int>(cell_height), isActive));
+
+        _cells.emplace_back(v);
     }
 }
 
-void Grid::DrawCells()
+void Grid::drawCells()
 {
     // Clear screen
-    SDL_SetRenderDrawColor(sdl_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(sdl_renderer, 255, 255, 255, 1);
     SDL_RenderClear(sdl_renderer);
 
-    SDL_SetRenderDrawColor(sdl_renderer, 238, 238, 238, 1);
-    for (auto cell : _cells)
-        SDL_RenderDrawRect(sdl_renderer, cell.getRect());
+    
+    for (auto row : _cells)
+        for (auto cell : row)
+            if (cell.isAlive()) {
+                SDL_SetRenderDrawColor(sdl_renderer, 0, 0, 0, 1);
+                SDL_RenderFillRect(sdl_renderer, cell.getRect());
+            } else {
+                SDL_SetRenderDrawColor(sdl_renderer, 238, 238, 238, 1);
+                SDL_RenderDrawRect(sdl_renderer, cell.getRect());
+            }
 
     // Update Screen
     SDL_RenderPresent(sdl_renderer);
+}
+
+void Grid::makeCellAlive(int x, int y)
+{
+    std::cout << "Cell x: " << x << " y: " << y << std::endl;
+    _cells[x/static_cast<int>(cell_width)][y/static_cast<int>(cell_height)].live();
 }
