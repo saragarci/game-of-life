@@ -12,9 +12,8 @@ int main(int, char**){
 
     Grid grid(kScreenWidth, kScreenHeight, kCellWidth, kCellHeight);
     grid.createCells();
-    Game game(grid, 315, 315);
-    game.startGame();
     Controller controller;
-    controller.getUserInput();
+    Game game(grid, controller);
+    game.startGame();
 	return 0;
 }

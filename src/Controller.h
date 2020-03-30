@@ -5,13 +5,10 @@
 
 class Controller {
 public:
-    void getUserInput();
-    int getMousePositionX() { return _xMouse; }
-    int getMousePositionY() { return _yMouse; }
+    void getUserInput(bool &running, bool &isInitialized, int &_xMouse, int &_yMouse);
 
 private:
-    int _xMouse;
-    int _yMouse;
+
 };
 
 #endif

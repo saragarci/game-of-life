@@ -58,7 +58,7 @@ void Grid::drawCells()
     
     for (auto row : _cells)
         for (auto cell : row)
-            if (cell.isAlive()) {
+            if (cell.getIsAlive()) {
                 SDL_SetRenderDrawColor(sdl_renderer, 0, 0, 0, 1);
                 SDL_RenderFillRect(sdl_renderer, cell.getRect());
             } else {
@@ -70,8 +70,25 @@ void Grid::drawCells()
     SDL_RenderPresent(sdl_renderer);
 }
 
-void Grid::makeCellAlive(int x, int y)
+void Grid::setAlive(int x, int y)
 {
     std::cout << "Cell x: " << x << " y: " << y << std::endl;
-    _cells[x/static_cast<int>(cell_width)][y/static_cast<int>(cell_height)].live();
+    if (x >= 0 && x < static_cast<int>(screen_width) && y >= 0 && y < static_cast<int>(screen_height))
+        _cells[x/static_cast<int>(cell_width)][y/static_cast<int>(cell_height)].setIsAlive(true);
+    else
+        std::cout << "Cell out of bounds!" << y << std::endl;
+}
+
+void Grid::setFirstAlive(int x, int y, bool &initializing)
+{
+    std::cout << "Cell x: " << x << " y: " << y << std::endl;
+    if (x >= 0 && x < static_cast<int>(screen_width) && y >= 0 && y < static_cast<int>(screen_height))
+    {
+        _cells[x/static_cast<int>(cell_width)][y/static_cast<int>(cell_height)].setIsAlive(true);
+        initializing = false;
+    }
+    else 
+    {
+        std::cout << "Cell out of bounds!" << y << std::endl;
+    }
 }
