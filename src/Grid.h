@@ -19,8 +19,14 @@ public:
     int getNumberOfRows() { return static_cast<int>(screen_height/cell_height); }
     int getNumberOfColumns() { return static_cast<int>(screen_width/cell_width); }
     void setAlive(int x, int y);
+    void updateCells();
 
 private:
+    int getAliveNeighbours(int i, int j, std::vector<std::vector<Cell>> cellsPresentState);
+    int getNeighbour(int x, int y, std::vector<std::vector<Cell>> cellsPresentState);
+    
+    std::vector<std::vector<Cell>> createCellsCopy();
+
     std::vector<std::vector<Cell>> _cells;
     
     SDL_Window *sdl_window;

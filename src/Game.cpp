@@ -12,10 +12,13 @@ Game::Game(Grid &grid, Controller &controller) : _grid(grid), _controller(contro
 void Game::startGame() {
     std::cout << "Starting Game!" << std::endl;
 
+    int count = 0;
     while (_running) {
-        SDL_Delay(1000);
+        std::cout << "Iteration: " << count << std::endl;
+        //SDL_Delay(5000);
         _controller.getUserInput(_running, _isInitialized, _initialX, _initialY);
-        _grid.setAlive(639, 639);
+        _grid.updateCells();
         _grid.drawCells();
+        ++count;
     }
 }
