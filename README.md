@@ -46,7 +46,7 @@ The initial pattern constitutes the seed of the system. The first generation is 
 ### Starting the game
 
 After running `./GameOfLife` the user needs to create an initial pattern in order to see how it evolves. For this, follow the next steps:
-1. On the window that will open up, choose the cells you want to activate by clicking on them using your mouse. The cells that you activate will end up being the initial pattern. In the [Examples of patterns section from the Wikipedia](https://en.wikipedia.org/wiki/Conway's_Game_of_Life#Examples_of_patterns) you can find examples of initial patters that you may want to try.
+1. On the window that will open up, choose the cells you want to activate by clicking on them using your mouse. The cells that you activate will end up being the initial pattern. In the [Examples of patterns section from the Wikipedia](https://en.wikipedia.org/wiki/Conway's_Game_of_Life#Examples_of_patterns) you can find examples of initial patterns that you may want to try.
 2. Once you are done, press enter to start the game and see how the pattern evolves with each iteration.
 3. To stop the game, simply close the window.
 
