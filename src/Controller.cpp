@@ -18,7 +18,8 @@ void Controller::getUserInput(bool &running, bool &isInitialized, int &_xMouse, 
         }
         else if (e.type == SDL_KEYDOWN)
         {
-            if (e.key.keysym.sym == SDLK_RETURN) {
+            if (e.key.keysym.sym == SDLK_RETURN)
+            {
                 isInitialized = true;
             }
         }

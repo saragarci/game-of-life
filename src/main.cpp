@@ -15,5 +15,5 @@ int main(int, char**){
     Controller controller;
     Game game(grid, controller);
     game.startGame();
-	return 0;
+    return 0;
 }
