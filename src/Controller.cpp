@@ -8,6 +8,8 @@ void Controller::getUserInput(bool &running, bool &isInitialized, int &_xMouse, 
         if (e.type == SDL_QUIT)
         {
             running = false;
+            if (!isInitialized)
+                isInitialized = true;
         }
         else if (e.type == SDL_MOUSEBUTTONDOWN && !isInitialized)
         {

@@ -10,8 +10,6 @@ Game::Game(Grid &grid, Controller &controller) : _grid(grid), _controller(contro
 }
 
 void Game::startGame() {
-    std::cout << "Starting Game!" << std::endl;
-
     int count = 0;
     while (_running) {
         std::cout << "Iteration: " << count << std::endl;
