@@ -50,6 +50,14 @@ After running `./GameOfLife` the user needs to create an initial pattern in orde
 2. Once you are done, press enter to start the game and see how the pattern evolves with each iteration.
 3. To stop the game, simply close the window.
 
+## Project Structure
+
+This project is organized into four main classes:
+* **Grid**: Represents the grid of the game and is therefore a container of all the cells. In this class the SDL window and render are created. It also contains very important methods like: `createCells()`, which creates the initial matrix of cells and a copy of it; `drawCells()`, which rerenders every cell again; and last but not least `updateCells()`, which is the method that applies the rules of the game of life and updates the state of each cell accordingly.
+* **Cell**: Represents a cell, which is the most basic unit in this project. A cell is defined by a boolean `isAlive` and an `SDL_Rect` (which contains the underlying rectangle that this cell has).
+* **Controller**: This class is used to retrieve the user input. Here, events like a mouse click, pressing enter or quit are tracked.
+* **Game**: The game class is the class that puts all of this together. It has two main methods: its constructor, where the game is initialized with the user inserting the initial pattern; and the `startGame()` method, which contains an infinite loop that will keep doing iterations on the present grid and updating it.
+
 ## Credits
 
 ### Used resources
